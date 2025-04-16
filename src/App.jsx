@@ -1,27 +1,15 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
 import { useRoutes } from "react-router-dom";
 import routes from "./router";
-import AbAxios from "./service";
+import Header from "./components/app-header";
+import Footer from "./components/app-footer";
 
 const App = memo(() => {
-  const [highscore, setHighscore] = useState({});
-  useEffect(() => {
-    AbAxios.get({ url: "/home/highscore" }).then((res) => {
-      setHighscore(res);
-      console.log(res);
-    });
-  }, []);
   return (
     <div>
-      <div className="header">Header</div>
-      <h1>{highscore.title}</h1>
-      <ul>
-        {highscore.list?.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+      <Header></Header>
       {useRoutes(routes)}
-      <div className="Footer">Footer</div>
+      <Footer></Footer>
     </div>
   );
 });
