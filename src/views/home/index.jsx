@@ -5,6 +5,7 @@ import { HomeWrapper } from "./style";
 import HomeBanner from "./home-banner";
 import { fetchGoodPriceData } from "@/store/home";
 import SectionHeader from "@/components/section-header";
+import SectionRooms from "@/components/section-rooms";
 
 const Home = memo(() => {
   // 派发异步事件：发送网络请求
@@ -25,6 +26,7 @@ const Home = memo(() => {
       <div className="content">
         <div className="good-price">
           <SectionHeader title={goodPriceInfo.title}></SectionHeader>
+          <SectionRooms roomList={goodPriceInfo.list}></SectionRooms>
         </div>
       </div>
     </HomeWrapper>
